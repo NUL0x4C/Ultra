@@ -71,34 +71,6 @@ int wmain(int argc, wchar_t* argv[]) {
 		- for the decryption part, the locker will save the seeds used in the file, and will
 		  save the first 4 bytes of the key used, so that we don't break the file if the key was mistakenly generated different.
 		- in case of large files, the locker read and write 65535 byte only and thats to save time.
-		- how does the final file look like :
-
-
-			FULL ENCRYPTION									   PARTIAL ENCRYPTION
-	-----------------------------						-----------------------------
-	|							|						|							|
-	|							|						|							|
-	|							|						|	      RAW DATA	        |
-	|		                    |						|							|
-	|							|						|							|
-	|							|						|							|
-	|         ENC DATA			|					    -----------------------------
-	|							|                       |							|
-	|							|                       |							|
-	|							|                       |	 65535 BYTE ENC DATA    |
-	|							|                       |							|
-	|							|                       |							|
-	-----------------------------                       -----------------------------
-	|	4 BYTE ECRYPTION TYPE   |						|	4 BYTE ECRYPTION TYPE   |
-	|	   [0xB2B2B2B2]			|						|		[0xA1A1A1A1]		|
-	-----------------------------						-----------------------------
-	|  4 BYTE PART OF THE KEY	|						|  4 BYTE PART OF THE KEY	|
-	-----------------------------						-----------------------------
-	|							|						|							|
-	|	  15 BYTE [SEEDS]		|						|	   15 BYTE [SEEDS]		|
-	|							|						|							|
-	|							|						|							|
-	-----------------------------						-----------------------------
 
 
 
